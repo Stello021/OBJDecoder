@@ -41,7 +41,7 @@ template <class T> std::ostream& operator<< (std::ostream& s, Vector2<T>& v)
 {
 	s << "(" << v.U << ", " << v.V << ")";
 	return s;
-};
+}
 
 template <class T> struct Vector3
 {
@@ -49,12 +49,12 @@ template <class T> struct Vector3
 	{
 		struct
 		{
-			T VertexIndeces, UVIndeces, NormalIndeces;
+			T X, Y, Z;
 		};
 
 		struct
 		{
-			T X, Y, Z;
+			T VertexIndeces, UVIndeces, NormalIndeces;
 		};
 
 		T Raw[3];
@@ -70,14 +70,14 @@ template <class T> struct Vector3
 
 	}
 
-	inline Vector3<T> operator+ (const Vector3<T>& v) const { return Vector2<T>(X + v.X, Y + v.Y, Z + v.Z); }
-	inline Vector3<T> operator- (const Vector3<T>& v) const { return Vector2<T>(X - v.X, Y - v.Y, Z - v.Z); }
-	inline Vector3<T> operator* (const float f) const { return Vector2<T>(X * f, Y * f, Z * f); }
-	inline T operator* (const Vector3<T>& v) const { return X * v.X + Y * v.Y + Z * v.Z } //Dot Product
+	inline Vector3<T> operator+ (const Vector3<T>& v) const { return Vector3<T>(X + v.X, Y + v.Y, Z + v.Z); }
+	inline Vector3<T> operator- (const Vector3<T>& v) const { return Vector3<T>(X - v.X, Y - v.Y, Z - v.Z); }
+	inline Vector3<T> operator* (const float f) const { return Vector3<T>(X * f, Y * f, Z * f); }
+	inline T operator* (const Vector3<T>& v) const { return X * v.X + Y * v.Y + Z * v.Z; } //Dot Product
 	inline Vector3<T> operator^ (const Vector3<T>& v) const //Cross Product
-	{ 
-		return Vector3<T> (Y * v.Z - Z * v.Y, Z * v.X - X * v.Z, X * v.Y - Y * v.X)
-	} 
+	{
+		return Vector3<T>(Y * v.Z - Z * v.Y, Z * v.X - X * v.Z, X * v.Y - Y * v.X);
+	}
 
 	T Dot(const Vector3<T>& v) const
 	{
@@ -107,12 +107,11 @@ template <class T> struct Vector3
 		*this *= length / Magnitude();
 		return *this;
 	}
-
-	template <class> friend std::ostream& operator<<(std::ostream& s, Vector3<t>& v); //this operator refer to following function
+	
 };
 
 template <class T> 	std::ostream& operator<< (std::ostream& s, Vector3<T>& v) 
 {
 	s << "(" << v.X << ", " << v.Y << ", " << v.Z << ")";
 	return s;
-};
+}
