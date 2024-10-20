@@ -107,6 +107,8 @@ template <class T> struct Vector3
 		*this *= length / Magnitude();
 		return *this;
 	}
+
+	template <class > friend std::ostream& operator<< (std::ostream& s, Vector3<T>& v); //this operator refer to following function
 	
 };
 
