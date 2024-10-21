@@ -49,6 +49,29 @@ template <class T> struct Vector2
 	inline Vector2<T> operator* (const float f) const { return Vector2<T>(U * f, V * f); }
 	inline T operator* (const Vector2<T>& v) const { return X * v.X + Y * v.Y} //Dot Product
 
+	T Dot(const Vector2<T>& v) const
+	{
+		T result = *this * v;
+		return result;
+	}
+
+	/// <summary>
+    /// Calculates vector's length
+    /// </summary>
+	float Magnitude() const
+	{
+		return std::sqrt(X * X + Y * Y);
+	}
+
+	/// <summary>
+    /// Scales the vector to have a magnitude of lenght
+    /// </summary>
+	Vector2<T>& Normalize(T length = 1)
+	{
+		*this *= length / Magnitude();
+		return *this;
+	}
+
 	template <class > friend std::ostream& operator<< (std::ostream& s, Vector2<T>& v); //this operator refer to following function
 
 };
