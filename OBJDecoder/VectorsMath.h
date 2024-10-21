@@ -29,9 +29,25 @@ template <class T> struct Vector2
 
 	}
 
+	Vector2(const Vector2<T>& v) : U(v.U), V(v.V)
+	{
+
+	}
+
+	Vector2<T>& operator=(const Vector2<T>& v)
+	{
+		if (this != &v)
+		{
+			U = v.U;
+			V = v.V;
+		}
+		return *this;
+	}
+
 	inline Vector2<T> operator+ (const Vector2<T>& v) const { return Vector2<T>(U + v.U, V + v.V); }
 	inline Vector2<T> operator- (const Vector2<T>& v) const { return Vector2<T>(U - v.U, V - v.V); }
 	inline Vector2<T> operator* (const float f) const { return Vector2<T>(U * f, V * f); }
+	inline T operator* (const Vector2<T>& v) const { return X * v.X + Y * v.Y} //Dot Product
 
 	template <class > friend std::ostream& operator<< (std::ostream& s, Vector2<T>& v); //this operator refer to following function
 
@@ -68,6 +84,22 @@ template <class T> struct Vector3
 	Vector3(T x, T y, T z) : X(x), Y(y), Z(z)
 	{
 
+	}
+
+	Vector3(const Vector3<T>& v) : X(v.X), Y(v.Y), Z(v.Z)
+	{
+
+	}
+
+	Vector3<T>& operator=(const Vector3<T>& v)
+	{
+		if (this != &v)
+		{
+			X = v.X;
+			Y = v.Y;
+			Z = v.Z;
+		}
+		return *this;
 	}
 
 	inline Vector3<T> operator+ (const Vector3<T>& v) const { return Vector3<T>(X + v.X, Y + v.Y, Z + v.Z); }
