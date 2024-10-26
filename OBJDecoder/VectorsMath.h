@@ -159,7 +159,7 @@ template <class T> struct Vector3
 	/// </summary>
 	Vector3<T>& Normalize(T length = 1)
 	{
-		*this *= length / Magnitude();
+		*this = (*this) * (length / Magnitude());
 		return *this;
 	}
 
