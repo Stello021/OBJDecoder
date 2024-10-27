@@ -47,7 +47,7 @@ template <class T> struct Vector2
 	inline Vector2<T> operator+ (const Vector2<T>& v) const { return Vector2<T>(U + v.U, V + v.V); }
 	inline Vector2<T> operator- (const Vector2<T>& v) const { return Vector2<T>(U - v.U, V - v.V); }
 	inline Vector2<T> operator* (const float f) const { return Vector2<T>(U * f, V * f); }
-	inline T operator* (const Vector2<T>& v) const { return X * v.X + Y * v.Y} //Dot Product
+	inline T operator* (const Vector2<T>& v) const { return X * v.X + Y * v.Y; } //Dot Product
 
 	T Dot(const Vector2<T>& v) const
 	{
